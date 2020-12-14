@@ -50,7 +50,10 @@
           data-test="shipping-methods"
         />
       </div>
-      <PaymentMethod data-test="payment-methods"/>
+      <PaymentMethod 
+        data-test="payment-methods"
+        v-bind:amount="{currencyCode:'AUD',centAmount:4999}"
+      />
       <div class="your-order-info order-total">
         <ul>
           <li class="bold-text">
