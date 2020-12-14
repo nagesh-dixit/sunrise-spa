@@ -52,7 +52,9 @@
       </div>
       <PaymentMethod 
         data-test="payment-methods"
-        v-bind:amount="{currencyCode:'AUD',centAmount:4999}"
+        v-bind:amount="amount"
+        v-on:card-paid="cardPaid"
+        :key="me.activeCart.totalPrice"
       />
       <div class="your-order-info order-total">
         <ul>
@@ -80,7 +82,10 @@
         </div>
       </div> -->
     </div>
-    <div class="Place-order mt-30">
+    <div 
+      class="Place-order mt-30"
+      v-if="paid"
+    >
       <a
         @click.prevent="placeOrder"
         data-test="place-order"

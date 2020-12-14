@@ -80,6 +80,7 @@ export default {
               .then((result) => {
                 this.loading = false;
                 this.paid = true;
+                this.$emit("card-paid", result.id);
               });
           },
         };

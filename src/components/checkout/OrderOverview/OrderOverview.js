@@ -35,15 +35,23 @@ export default {
   mixins: [productMixin, cartMixin],
   data: () => ({
     me: null,
+    paid: false,
+    paymentid: null,
   }),
   methods: {
+    cardPaid(paymentid) {
+      if (paymentid) {
+        this.paymentid = paymentid;
+      }
+      this.paid = true;
+    },
     totalPrice,
     updateShippingMethod(shippingId) {
       this.$emit("update-shipping", shippingId);
       this.$apollo.queries.me.refresh();
     },
     placeOrder() {
-      this.$emit("complete-order");
+      this.$emit("complete-order", this.paymentid);
     },
     nameFromLineItem(lineItem) {
       const attributes = variantAttributes(
@@ -61,6 +69,9 @@ export default {
         return subTotal(this.me.activeCart);
       }
       return null;
+    },
+    amount() {
+      return this.me.activeCart.totalPrice;
     },
   },
   apollo: {
