@@ -17,14 +17,6 @@ const payments = {
       body: JSON.stringify(body),
     })
   ),
-  //@todo: remove, it is now just fetching existing to prevent
-  //  making too many
-  // createItem: withToken((body, accessToken) =>
-  //   groupFetchJson(
-  //     `${baseUrl}/payments/ccc3bb9f-83b7-466f-8cac-3622ec26692b`,
-  //     makeConfig(accessToken)
-  //   )
-  // ),
   updateItem: withToken(
     ({ id, version, amount, paymentMethod }, accessToken) =>
       //process.env.VUE_APP_ADYEN_MERCHANT_ACCOUNT
