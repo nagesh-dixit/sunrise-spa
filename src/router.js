@@ -49,8 +49,8 @@ const router = new Router({
           name: 'home',
           components: {
             default: PageHome,
-            header: TheHeader,
-            footer: TheFooter,
+            // header: TheHeader,
+            // footer: TheFooter,
           },
         },
         {

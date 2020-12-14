@@ -2,5 +2,8 @@
 <style src="./PageHome.scss" lang="scss"></style>
 
 <template>
-<Payment v-bind:amount="{ value: 22, currency: 'UA' }"/>
+<Payment v-bind:amount="{
+        currencyCode: 'AUD',
+        centAmount: 8888,
+      }"/>
 </template>
