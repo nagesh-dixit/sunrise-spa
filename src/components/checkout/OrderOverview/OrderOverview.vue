@@ -54,7 +54,7 @@
         data-test="payment-methods"
         v-bind:amount="amount"
         v-on:card-paid="cardPaid"
-        :key="me.activeCart.totalPrice"
+        :key="me.activeCart.totalPrice.centAmount"
       />
       <div class="your-order-info order-total">
         <ul>
