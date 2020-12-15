@@ -3,7 +3,7 @@
 /* eslint-disable no-param-reassign */
 import {
   withToken,
-  groupFetchJson,
+  fetchJson,
   makeConfig,
   baseUrl,
 } from "./api";
@@ -11,7 +11,7 @@ import uuid from "uuid";
 
 const payments = {
   createItem: withToken((body, accessToken) =>
-    groupFetchJson(`${baseUrl}/payments/`, {
+    fetchJson(`${baseUrl}/payments/`, {
       ...makeConfig(accessToken),
       method: "POST",
       body: JSON.stringify(body),
@@ -20,7 +20,7 @@ const payments = {
   updateItem: withToken(
     ({ id, version, amount, paymentMethod }, accessToken) =>
       //process.env.VUE_APP_ADYEN_MERCHANT_ACCOUNT
-      groupFetchJson(`${baseUrl}/payments/${id}`, {
+      fetchJson(`${baseUrl}/payments/${id}`, {
         ...makeConfig(accessToken),
         method: "POST",
         body: JSON.stringify({

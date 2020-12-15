@@ -33,71 +33,102 @@ export default {
   data: () => ({
     loading: true,
     paid: false,
+    error: false,
   }),
+  computed: {
+    showComponent() {
+      return !this.loading && !this.paid && !this.error;
+    },
+    showLoading() {
+      return this.loading && !this.error;
+    },
+    showPaid() {
+      return this.paid;
+    },
+    showError() {
+      return !this.paid && this.error;
+    },
+  },
+  methods: {
+    retry() {
+      this.error = false;
+      this.onMount();
+    },
+    onMount() {
+      if (this.error) {
+        return;
+      }
+      payments
+        .createItem({
+          amountPlanned: this.amount,
+          paymentMethodInfo: {
+            paymentInterface:
+              process.env.VUE_APP_ADYEN_INTEGRATION,
+            method: "CREDIT_CARD",
+            name: {
+              en: "Credit Card",
+            },
+          },
+          custom: {
+            type: {
+              typeId: "type",
+              key: process.env.VUE_APP_ADYEN_TYPE,
+            },
+            fields: {
+              getPaymentMethodsRequest: JSON.stringify({
+                countryCode: "AU",
+                shopperLocale: locale(),
+                amount: amountToAiden(this.amount),
+              }),
+            },
+          },
+        })
+        .then((payment) => {
+          const configuration = {
+            paymentMethodsResponse: JSON.parse(
+              payment.custom.fields
+                .getPaymentMethodsResponse
+            ),
+            clientKey,
+            locale: locale(this),
+            showPayButton: true,
+            amount: amountToAiden(this.amount),
+            environment: "test",
+            onSubmit: (result) => {
+              this.loading = true;
+              if (!result.isValid) {
+                this.error = true;
+              }
+              payments
+                .updateItem({
+                  id: payment.id,
+                  version: payment.version,
+                  amount: amountToAiden(
+                    payment.amountPlanned
+                  ),
+                  paymentMethod: result.data.paymentMethod,
+                })
+                .then((result) => {
+                  if (result.satusCode) {
+                    return Promise.reject();
+                  }
+                  this.loading = false;
+                  this.paid = true;
+                  this.$emit("card-paid", result.id);
+                })
+                .catch(() => (this.error = true));
+            },
+          };
+          const checkout = new AdyenCheckout(configuration);
+          const card = checkout
+            .create("card")
+            .mount(this.$refs.adyen);
+          this.loading = false;
+        })
+        .catch(() => (this.error = true));
+    },
+  },
   mounted() {
-    payments
-      .createItem({
-        // externalId: "123456",
-        // interfaceId: "789011",
-        amountPlanned: this.amount,
-        paymentMethodInfo: {
-          paymentInterface:
-            process.env.VUE_APP_ADYEN_INTEGRATION,
-          method: "CREDIT_CARD",
-          name: {
-            en: "Credit Card",
-          },
-        },
-        custom: {
-          type: {
-            typeId: "type",
-            key: process.env.VUE_APP_ADYEN_TYPE,
-          },
-          fields: {
-            getPaymentMethodsRequest: JSON.stringify({
-              countryCode: "AU",
-              shopperLocale: locale(),
-              amount: amountToAiden(this.amount),
-            }),
-          },
-        },
-      })
-      .then((payment) => {
-        const configuration = {
-          paymentMethodsResponse: JSON.parse(
-            payment.custom.fields.getPaymentMethodsResponse
-          ),
-          clientKey,
-          locale: locale(this),
-          showPayButton: true,
-          amount: amountToAiden(this.amount),
-          environment: "test",
-          onSubmit: (result) => {
-            this.loading = true;
-            if (!result.isValid) {
-              throw new Error("Implement reject");
-            }
-            payments
-              .updateItem({
-                id: payment.id,
-                version: payment.version,
-                amount: amountToAiden(
-                  payment.amountPlanned
-                ),
-                paymentMethod: result.data.paymentMethod,
-              })
-              .then((result) => {
-                this.loading = false;
-                this.paid = true;
-                this.$emit("card-paid", result.id);
-              });
-          },
-        };
-        const checkout = new AdyenCheckout(configuration);
-        const card = checkout
-          .create("card")
-          .mount(this.$refs.adyen);
-        this.loading = false;
-      });
+    this.onMount();
   },
 };

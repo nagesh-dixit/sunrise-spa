@@ -41,7 +41,10 @@
           </ul>
         </div>
       </div>
-      <div class="checkout-shipping-content">
+      <div 
+        class="checkout-shipping-content"
+        v-if="!paid"
+      >
         <div class="shipping-content-left">
           <span class="bold-text">{{ $t('shipping') }}</span>
         </div>
