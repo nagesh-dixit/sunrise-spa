@@ -1,6 +1,15 @@
 /**
- * To use this component set the VUE_APP_USE_ADYEN to 1
- * in your environment variables
+ * To use this component you need to do the following:
+ * set up the api extension for adyen
+ * https://github.com/commercetools/commercetools-adyen-integration
+ *
+ * Set the folling environment variables:
+ * VUE_APP_USE_ADYEN=1
+ * VUE_APP_ADYEN_CLIENT_KEY=client key (from adyen)
+ * VUE_APP_ADYEN_MERCHANT_ACCOUNT=merchant account (from adyenn)
+ * VUE_APP_ADYEN_INTEGRATION=key of the extension: https://docs.commercetools.com/api/projects/api-extensions#extension
+ * VUE_APP_ADYEN_TYPE=key of the custom type: https://docs.commercetools.com/api/projects/types#type
+ *
  * Manage payments scope is needed when creating api key in merchant center
  */
 
@@ -32,7 +41,8 @@ export default {
         // interfaceId: "789011",
         amountPlanned: this.amount,
         paymentMethodInfo: {
-          paymentInterface: "ctp-adyen-integration",
+          paymentInterface:
+            process.env.VUE_APP_ADYEN_INTEGRATION,
           method: "CREDIT_CARD",
           name: {
             en: "Credit Card",
@@ -41,8 +51,7 @@ export default {
         custom: {
           type: {
             typeId: "type",
-            key:
-              "ctp-adyen-integration-web-components-payment-type",
+            key: process.env.VUE_APP_ADYEN_TYPE,
           },
           fields: {
             getPaymentMethodsRequest: JSON.stringify({
