@@ -38,6 +38,10 @@ const payments = {
                     .VUE_APP_ADYEN_MERCHANT_ACCOUNT,
               }),
             },
+            {
+              action: "setStatusInterfaceCode",
+              interfaceCode: "paid",
+            },
           ],
         }),
       })
