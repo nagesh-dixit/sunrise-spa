@@ -87,6 +87,9 @@ export default {
               },
             })
             .then((payment) => {
+              if (payment.satusCode) {
+                return Promise.reject();
+              }
               this.$store.dispatch("setPayment", payment);
               return payment;
             })
@@ -133,6 +136,10 @@ export default {
                   this.loading = false;
                   this.paid = true;
                   this.$emit("card-paid", result.id);
+                  this.$store.dispatch(
+                    "setPayment",
+                    undefined
+                  );
                 })
                 .catch(() => (this.error = true));
             },

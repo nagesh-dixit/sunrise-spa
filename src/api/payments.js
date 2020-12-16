@@ -7,7 +7,7 @@ import {
   makeConfig,
   baseUrl,
 } from "./api";
-import uuid from "uuid";
+import { v4 as uuid } from "uuid";
 
 const payments = {
   createItem: withToken((body, accessToken) =>
