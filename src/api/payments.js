@@ -17,9 +17,17 @@ const payments = {
       body: JSON.stringify(body),
     })
   ),
+  deleteItem: withToken(({ id, version }, accessToken) => {
+    const url = new URL(`${baseUrl}/payments/${id}`);
+    url.searchParams.append("version", version);
+    url.searchParams.append("dataErasure", true);
+    fetchJson(url, {
+      ...makeConfig(accessToken),
+      method: "DELETE",
+    });
+  }),
   updateItem: withToken(
     ({ id, version, amount, paymentMethod }, accessToken) =>
-      //process.env.VUE_APP_ADYEN_MERCHANT_ACCOUNT
       fetchJson(`${baseUrl}/payments/${id}`, {
         ...makeConfig(accessToken),
         method: "POST",

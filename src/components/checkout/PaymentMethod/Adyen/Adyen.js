@@ -54,35 +54,53 @@ export default {
       this.error = false;
       this.onMount();
     },
+    createPayment() {
+      return Promise.resolve(this.$store.state.payment)
+        .then(
+          (payment) =>
+            payment && payments.deleteItem(payment)
+        )
+        .then(() =>
+          payments
+            .createItem({
+              amountPlanned: this.amount,
+              paymentMethodInfo: {
+                paymentInterface:
+                  process.env.VUE_APP_ADYEN_INTEGRATION,
+                method: "CREDIT_CARD",
+                name: {
+                  en: "Credit Card",
+                },
+              },
+              custom: {
+                type: {
+                  typeId: "type",
+                  key: process.env.VUE_APP_ADYEN_TYPE,
+                },
+                fields: {
+                  getPaymentMethodsRequest: JSON.stringify({
+                    countryCode: "AU",
+                    shopperLocale: locale(),
+                    amount: amountToAiden(this.amount),
+                  }),
+                },
+              },
+            })
+            .then((payment) => {
+              this.$store.dispatch("setPayment", payment);
+              return payment;
+            })
+        );
+    },
     onMount() {
       if (this.error) {
         return;
       }
-      payments
-        .createItem({
-          amountPlanned: this.amount,
-          paymentMethodInfo: {
-            paymentInterface:
-              process.env.VUE_APP_ADYEN_INTEGRATION,
-            method: "CREDIT_CARD",
-            name: {
-              en: "Credit Card",
-            },
-          },
-          custom: {
-            type: {
-              typeId: "type",
-              key: process.env.VUE_APP_ADYEN_TYPE,
-            },
-            fields: {
-              getPaymentMethodsRequest: JSON.stringify({
-                countryCode: "AU",
-                shopperLocale: locale(),
-                amount: amountToAiden(this.amount),
-              }),
-            },
-          },
-        })
+      //@todo: only create a payment item if cart does not have one
+      //  emit payment-created and update cart in PageCheckout
+      //  pass cart to component and if cart has payment then fetch
+      //  it (add fetchitem to payments.js)
+      this.createPayment()
         .then((payment) => {
           const configuration = {
             paymentMethodsResponse: JSON.parse(
@@ -125,7 +143,11 @@ export default {
             .mount(this.$refs.adyen);
           this.loading = false;
         })
-        .catch(() => (this.error = true));
+        .catch((error) => {
+          // eslint-disable-next-line no-console
+          console.log("why what?", error);
+          this.error = true;
+        });
     },
   },
   mounted() {
