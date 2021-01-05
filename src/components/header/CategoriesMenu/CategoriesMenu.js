@@ -72,7 +72,7 @@ export default {
       ).sort(
         (c1, c2) => c1.orderHint.localeCompare(c2.orderHint),
       );
-      return this.categories && recurSort(this.categories.results);
+      return this.categories && recurSort(this.categories.results[0].children);
     },
   },
   apollo: {

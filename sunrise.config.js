@@ -15,18 +15,17 @@ export default {
   },
   languages: {
     en: 'English',
-    de: 'Deutsch',
   },
   countries: {
-    DE: 'Deutschland',
+    CA: 'Canada',
     US: 'United States',
   },
   formats: {
     number: {
-      DE: {
+      CA: {
         currency: {
           style: 'currency',
-          currency: 'EUR',
+          currency: 'CAD',
           currencyDisplay: 'symbol',
         },
       },
@@ -45,7 +44,7 @@ export default {
           day: 'numeric',
         },
       },
-      DE: {
+      CA: {
         short: {
           year: 'numeric',
           month: 'short',
@@ -58,17 +57,16 @@ export default {
     salesExternalId: '6',
   },
   facetSearches: [
-    { name: 'size', type: 'text' },
-    { name: 'color', type: 'lnum', component: 'colors' },
-    { name: 'designer', type: 'enum', component: 'designer' },
+    { name: 'type', type: 'text' },
+    { name: 'brand', type: 'lnum' },
   ],
   detailAttributes: [
-    'designer', 'colorFreeDefinition', 'size', 'style', 'gender', 'articleNumberManufacturer',
+    'type','weight','country-of-manufacture'
   ],
   variantSelector: [
-    'color', 'size',
+    'color', 'weight', 'resistance'
   ],
   variantInProductName: [
-    'size',
+    
   ],
 };
