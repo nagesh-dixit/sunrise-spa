@@ -61,10 +61,10 @@ export default {
     { name: 'brand', type: 'lnum' },
   ],
   detailAttributes: [
-    'type','weight','country-of-manufacture'
+    'brand', 'type','weight','country-of-manufacture'
   ],
   variantSelector: [
-    'color', 'weight', 'resistance'
+    'model', 'color', 'weight', 'resistance'
   ],
   variantInProductName: [
     

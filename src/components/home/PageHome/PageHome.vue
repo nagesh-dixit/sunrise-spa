@@ -3,7 +3,6 @@
 
 <template>
 <span>
-  <Banner />
 
   <div class="banner-area pt-30">
     <div class="custom-container">
@@ -16,11 +15,11 @@
           >
             <div class="banner-img banner-hover banner-zoom">
               <router-link
-                :to="{ name: 'products', params: { categorySlug: 'women-clothing-jeans' } }"
+                :to="{ name: 'products', params: { categorySlug: 'personal-stretching-and-yoga' } }"
               >
-                <img src="assets/img/jeans1.jpg" alt="banner" />
+                <img src="assets/img/stretching.jpg" alt="banner" />
                 <div class="banner-content">
-                  <h3>WOMEN JEANS</h3>
+                  <h3>STRETCHING AND YOGA</h3>
                 </div>
               </router-link>
             </div>
@@ -34,11 +33,11 @@
           >
             <div class="banner-img banner-hover banner-zoom">
               <router-link
-                :to="{ name: 'products', params: { categorySlug: 'men-shoes-sneakers' } }"
+                :to="{ name: 'products', params: { categorySlug: 'personal-strength' } }"
               >
-                <img src="assets/img/sho3.jpg" alt="banner" />
+                <img src="assets/img/strength.jpg" alt="banner" />
                 <div class="banner-content">
-                  <h3>SNEAKERS</h3>
+                  <h3>STRENGTH</h3>
                 </div>
               </router-link>
             </div>
@@ -50,11 +49,11 @@
           >
             <div class="banner-img banner-hover banner-zoom">
               <router-link
-                :to="{ name: 'products', params: { categorySlug: 'accessories' } }"
+                :to="{ name: 'products', params: { categorySlug: 'personal-cardio' } }"
               >
-                <img src="assets/img/acc.jpg" alt="banner" />
+                <img src="assets/img/cardio.jpg" alt="banner" />
                 <div class="banner-content">
-                  <h3>ACCESSORIES</h3>
+                  <h3>CARDIO</h3>
                 </div>
               </router-link>
             </div>
@@ -68,11 +67,11 @@
           >
             <div class="banner-img banner-hover banner-zoom">
               <router-link
-                :to="{ name: 'products', params: { categorySlug: 'women-clothing-swimwear' } }"
+                :to="{ name: 'products', params: { categorySlug: 'cat-sale' } }"
               >
-                <img src="assets/img/s3.jpg" alt="banner" />
+                <img src="assets/img/hot-sale-yoga-mats.jpg" alt="banner" />
                 <div class="banner-content">
-                  <h3>BATHING SUITS</h3>
+                  <h3>ON SALE</h3>
                 </div>
               </router-link>
             </div>
