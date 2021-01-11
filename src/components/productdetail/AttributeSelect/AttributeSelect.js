@@ -1,5 +1,5 @@
-import HooverDropdown from '../../common/HoverDropdown/HoverDropdown.vue';
-
+import HooverDropdown from "../../common/HoverDropdown/HoverDropdown.vue";
+import { compare } from "../../common/shared";
 export default {
   components: {
     HooverDropdown,
@@ -32,8 +32,8 @@ export default {
         return this.selected[this.id];
       },
       set(value) {
-        const sku = this.variantCombinations.find(
-          (combi) => combi[this.id] === value,
+        const sku = this.variantCombinations.find((combi) =>
+          compare(combi[this.id], value)
         )?.sku;
         if (sku) this.$router.push({ path: sku });
       },
