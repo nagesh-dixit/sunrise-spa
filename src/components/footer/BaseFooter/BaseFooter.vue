@@ -8,11 +8,11 @@
         <div class="row text-uppercase">
           <div class="col-sm-12">
             <ul class="footer-title imprint-row">
-              <li class="hidden-xs">© 2019 Sunrise</li>
+              <li class="hidden-xs">© 2021 Everything Fitness</li>
               <li><a href="#">{{ $t("imprint") }}</a></li>
               <li><a href="#">{{ $t("privacyPolicy") }}</a></li>
               <li><a href="#">{{ $t("termsOfUse") }}</a></li>
-              <li class="visible-xs">© 2019 Sunrise</li>
+              <li class="visible-xs">© 2021 Everything Fitness</li>
             </ul>
           </div>
         </div>

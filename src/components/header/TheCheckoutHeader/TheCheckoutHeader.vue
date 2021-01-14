@@ -7,8 +7,8 @@
         <div class="col-sm-4 col-xs-12">
           <router-link to="/"
                        class="brand-logo">
-            <img src="../../../assets/img/logo-white-text.svg"
-                 alt="SUNRISE"
+            <img src="../../../assets/img/logo-white-text.png"
+                 alt="Everything Fitness"
                  class="img-responsive checkout-header-logo"/>
           </router-link>
         </div>

@@ -18,9 +18,12 @@ const SET_CART_ITEMS = 'SET_CART_ITEMS';
 
 const availableLocales = Object.keys(sunriseConfig.languages);
 const availableCountries = Object.keys(sunriseConfig.countries);
+const availablecustomerGroups = Object.keys(sunriseConfig.customerGroups);
 
 export const fallbackLocale = availableLocales[0];
 const fallbackCountry = availableCountries[0];
+const fallbackCustomerGroup = availablecustomerGroups[0];
+
 const obtainCurrency = (country) => sunriseConfig.formats.number[country]?.currency?.currency;
 
 const clearMiniCartTimeout = (state) => {
@@ -42,6 +45,7 @@ export default new Vuex.Store({
   state: {
     locale: fallbackLocale,
     country: fallbackCountry,
+    customerGroup: fallbackCustomerGroup,
     currency: obtainCurrency(fallbackCountry),
     channel: null,
     storeName: null,
@@ -57,7 +61,7 @@ export default new Vuex.Store({
       if (availableLocales.includes(locale)) commit(SET_LOCALE, locale);
     },
     setCustomerGroup: ({ commit }, customerGroup) => {
-      commit(SET_CUSTOMER_GROUP, customerGroup);
+      if (availablecustomerGroups.includes(customerGroup)) commit(SET_CUSTOMER_GROUP, customerGroup);
     },
 
     setChannel: ({ commit }, channel) => {

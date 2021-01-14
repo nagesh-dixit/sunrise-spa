@@ -22,7 +22,7 @@
             <div class="footer-widget footer-about-2 mb-30">
               <div class="footer-logo">
                 <a href="index.html"
-                  ><img src="../../../assets/img/logo.svg" alt="logo"
+                  ><img src="../../../assets/img/logo.png" alt="logo"
                 /></a>
               </div>
               <div class="footer-info">
@@ -150,7 +150,7 @@
           </div>
           <div class="col-lg-4 col-md-4 col-sm-6 col-12">
             <div class="footer-widget copyright-2 text-center">
-              <p>© 2020 SUNRISE</p>
+              <p>© 2020 Everything Fitness</p>
             </div>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-12 col-12">

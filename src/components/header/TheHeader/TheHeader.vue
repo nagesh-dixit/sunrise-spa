@@ -47,8 +47,8 @@
                   <div class="logo">
                     <router-link to="/">
                       <img
-                        src="../../../assets/img/logo.svg"
-                        alt="SUNRISE"
+                        src="../../../assets/img/logo.png"
+                        alt="Everything Fitness"
                         class="img-responsive sunrise-logo"
                       />
                     </router-link>
@@ -98,7 +98,7 @@
           <div class="col-6">
             <div class="mobile-logo logo-width">
               <a href="index.html">
-                <img alt="" src="assets/images/logo/logo.svg" />
+                <img alt="" src="assets/images/logo/logo.png" />
               </a>
             </div>
           </div>

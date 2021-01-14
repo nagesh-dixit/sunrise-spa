@@ -15,7 +15,7 @@ banners[1]:
 banners[2]:
   title: Here comes the sun
   subtitle: FABULOUS EVERY DAY - SUMMER CHIC
-  description: Die Modetrends für den Sommer 2016 spielen mit Prints, Army- und Safarilooks sowie Pastel Farben. Accessoires wie runde Sonnenbrillen, geschnürte Stiefel und Shopper oder Handtaschen sorgen für Abwechslung. SUNRISE stellt Ihnen die Fashion Trends für den Sommer 2016 vor. Lassen Sie sich inspirieren!<br/><br/>Kaum ist der Frühling vorbei, umfängt uns der warme Sommer. Erfahren Sie, was die wichtigsten Fashion - Trends der kommenden Sommersaison sind und welche traumhaften Stücke Sie besitzen sollen! London, New York, Mailand, Paris – SUNRISE präsentiert die aktuelle Sommermode 2016 aus den Modemetropolen . Die neuesten Kleider, elegante Tops, Hosen, Bademode, exklusive Schuhe und Ballerinas, bezaubernden Schmuck, Sonnenbrillen und Accessoires für den perfekten Sommer.
+  description: Die Modetrends für den Sommer 2016 spielen mit Prints, Army- und Safarilooks sowie Pastel Farben. Accessoires wie runde Sonnenbrillen, geschnürte Stiefel und Shopper oder Handtaschen sorgen für Abwechslung. Everything Fitness stellt Ihnen die Fashion Trends für den Sommer 2016 vor. Lassen Sie sich inspirieren!<br/><br/>Kaum ist der Frühling vorbei, umfängt uns der warme Sommer. Erfahren Sie, was die wichtigsten Fashion - Trends der kommenden Sommersaison sind und welche traumhaften Stücke Sie besitzen sollen! London, New York, Mailand, Paris – Everything Fitness präsentiert die aktuelle Sommermode 2016 aus den Modemetropolen . Die neuesten Kleider, elegante Tops, Hosen, Bademode, exklusive Schuhe und Ballerinas, bezaubernden Schmuck, Sonnenbrillen und Accessoires für den perfekten Sommer.
   linkLabel: Jetzt kaufen
   link: /de/men-clothing-shirts
   backgroundImage: ../../assets/img/cms/man1-8to3.jpg
@@ -54,5 +54,5 @@ viewProducts:
   linkHref: new
 
 header:
-  shopName: Sunrise
-  shopLogo: ../../assets/img/cms/logo.svg
+  shopName: Everything Fitness
+  shopLogo: ../../assets/img/cms/logo.png

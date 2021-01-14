@@ -20,13 +20,16 @@ export default {
     CA: 'Canada',
     US: 'United States',
   },
+  customerGroups: {
+    "Home users" : "cg-home-users",
+    "Commercial users" : "cg-commercial-users"
+  },
   formats: {
     number: {
       CA: {
         currency: {
           style: 'currency',
           currency: 'CAD',
-          currencyDisplay: 'symbol',
         },
       },
       US: {

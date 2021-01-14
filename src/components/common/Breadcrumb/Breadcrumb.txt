@@ -1,7 +1,7 @@
 en:
   home: Home
   all: All
-  stores: Sunrise Stores
+  stores: Everything Fitness Stores
 de:
   home: Home
   all: Alle
