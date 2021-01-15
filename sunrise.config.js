@@ -61,13 +61,13 @@ export default {
   },
   facetSearches: [
     { name: 'type', type: 'text' },
-    { name: 'brand', type: 'lnum' },
+    { name: 'brand', type: 'text' },
   ],
   detailAttributes: [
     'brand', 'type','weight','country-of-manufacture'
   ],
   variantSelector: [
-    'model', 'color', 'weight', 'resistance'
+    'model', 'color', 'weight', 'resistance','bundle-constituents'
   ],
   variantInProductName: [
     
