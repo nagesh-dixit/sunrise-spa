@@ -64,7 +64,7 @@ export default {
     { name: 'brand', type: 'text' },
   ],
   detailAttributes: [
-    'brand', 'type','weight','country-of-manufacture'
+    'brand', 'type','weight','country-of-manufacture','warranty-info'
   ],
   variantSelector: [
     'model', 'color', 'weight', 'resistance','bundle-constituents'
